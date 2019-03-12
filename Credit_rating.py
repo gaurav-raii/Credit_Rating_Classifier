@@ -13,7 +13,7 @@ import pandas as pd
 import numpy as np
 #importing the dataset 
 df=pd.read_excel("CreditHistory_Clean.xlsx")
-#encoding using a function
+#encoding using a self defined function
 def my_encoder(z):
     for i in z:
         a=df[i][df[i].notnull()].unique()
@@ -34,6 +34,7 @@ from sklearn.model_selection import cross_val_score
 score_list=['recall','accuracy','precision','f1']
 search_depths=[5,6,7,8,10,12,15,20,25]
 
+#using cross validation to select the best depth from a list of depths for a decision tree 
 Table = pd.DataFrame(index=range(9),columns= score_list)
 k=0
 for d in search_depths:
